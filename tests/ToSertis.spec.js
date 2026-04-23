@@ -14,13 +14,19 @@ test('Search and enter certis ', async ({page}) => {
 
     await page.goto('https://www.google.com/')
 
-    const search_bar = page.getByRole('combobox')
+    const search_bar = page.getByRole('combobox');
 
     await search_bar.fill(`Sertis`);
     
-    await expect(search_bar).toHaveValue(`Sertis`)
+    await expect(search_bar).toHaveValue(`Sertis`);
     
-    await search_bar.press('Enter')
+    await search_bar.press('Enter');
+
+
+    console.log("Please do the captcha and press resume");
+
+    //Pause
+    await page.pause();
 
     await expect(page.getByText(`https://www.sertiscorp.com/`)).toBeVisible;
 
